@@ -1,9 +1,9 @@
-from telegram.ext import Updater,CommandHandler, MessageHandler, Filters, InlineQueryHandler, BaseFilter
+from telegram.ext import Updater,CommandHandler, MessageHandler, Filters
+from telegram.ext import InlineQueryHandler, BaseFilter, ConversationHandler
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 import logging
 from functions.func import *
 from functions.classes import *
-
 
 
 abuse_man = Abuse()
@@ -16,39 +16,34 @@ dispatcher=updater.dispatcher
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s -%(message)s', level=logging.INFO)
 
 # Added /start to work on demand
-start_handler = CommandHandler('start',start)
-dispatcher.add_handler(start_handler)
+dispatcher.add_handler(CommandHandler('start',start))
 
-#Added retarded friendly
-retard_handler = MessageHandler(abuse_man,abused)
+# Added retarded friendly
+dispatcher.add_handler(MessageHandler(abuse_man,abused))
 
 # Added the bot to repeat the non command words
-echo_handler = MessageHandler(Filters.text & (~Filters.command),echo)
-dispatcher.add_handler(echo_handler)
+dispatcher.add_handler(MessageHandler(Filters.text & (~Filters.command),echo))
 
 # Added the /caps functionalities to the caps
-caps_handler = CommandHandler('caps', caps)
-dispatcher.add_handler(caps_handler)
+dispatcher.add_handler(CommandHandler('caps', caps))
 
 # Added inline caps funcionalities
-inline_caps_handler = InlineQueryHandler(inline_caps)
-dispatcher.add_handler(inline_caps_handler)
+dispatcher.add_handler(InlineQueryHandler(inline_caps))
 
 # Added picture and video handler
-picvid_handler = MessageHandler(Filters.photo | Filters.video,picvid)
-dispatcher.add_handler(picvid_handler)
+dispatcher.add_handler(MessageHandler(Filters.photo | Filters.video,picvid))
 
 # Added some random
-owner_handler = CommandHandler('owner', owner)
-dispatcher.add_handler(owner_handler)
+dispatcher.add_handler(CommandHandler('owner', owner))
 
 # Added filter to sticker
-sticker_handler = MessageHandler(Filters.sticker, sticker)
-dispatcher.add_handler(sticker_handler)
+dispatcher.add_handler(MessageHandler(Filters.sticker, sticker))
+
+# Added help handler
+dispatcher.add_handler(CommandHandler('help',helpComplaints))
 
 # Add unknown to program
-unknown_handler = MessageHandler(Filters.command, unknown)
-dispatcher.add_handler(unknown_handler)
+dispatcher.add_handler(MessageHandler(Filters.command, unknown))
 
 
 # Started the bot

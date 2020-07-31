@@ -21,7 +21,7 @@ def echo(update,context):
 
 
 def start(update,context):
-    context.bot.send_message(chat_id=update.effective_chat.id,text="I am a bot.How are you?")
+    context.bot.send_message(chat_id=update.effective_chat.id,text="Hello! I am a bot.How are you?")
 
 
 def caps(update,context):
@@ -42,7 +42,11 @@ def owner(update,context):
 
 def unknown(update,context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I dont understand FTW you said buddy!")
+    update.message.reply_text("Do as i say anything bitch")
 
 
 def abused(update,context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="You retard your mom retard")
+
+def helpComplaints(update,context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text = "For helps and complaint, check github: galanteria01")
