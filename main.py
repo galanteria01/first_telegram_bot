@@ -16,7 +16,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s -%(message)s'
 # Added /start to work on demand
 dispatcher.add_handler(CommandHandler('start',start))
 
-dispatcher.add_handler(MessageHandler(Filters.caption_entity("hashtag"),hashtag))
+dispatcher.add_handler(MessageHandler(Filters.caption_entity("hashtag")))
 
 
 # Added the /caps functionalities to the caps
@@ -39,6 +39,9 @@ dispatcher.add_handler(CommandHandler('help',helpComplaints))
 
 # Add unknown to program
 dispatcher.add_handler(MessageHandler(Filters.command, unknown))
+
+# Added the bot to repeat the non command words
+dispatcher.add_handler(MessageHandler(Filters.text & (~Filters.command),echo))
 
 
 

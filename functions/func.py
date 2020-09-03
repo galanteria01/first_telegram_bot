@@ -16,6 +16,9 @@ def sticker(update,context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Thats really stupid sticker.U suck 24/7")
 
 
+def echo(update,context):
+    context.bot.send_message(chat_id=update.effective_chat.id,text=update.message.text)
+
 
 def start(update,context):
     context.bot.send_message(chat_id=update.effective_chat.id,text="Hello! I am a bot.How are you?")
