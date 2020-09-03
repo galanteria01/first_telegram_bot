@@ -6,8 +6,6 @@ from functions.func import *
 from functions.classes import *
 
 
-abuse_man = Abuse()
-
 # Initialised token from botfather
 updater = Updater('1033297905:AAF4KZfofsQNsdkDrHxoP15jgU5VSWAD4Tw', use_context=True)
 dispatcher=updater.dispatcher
@@ -18,11 +16,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s -%(message)s'
 # Added /start to work on demand
 dispatcher.add_handler(CommandHandler('start',start))
 
-# Added retarded friendly
-dispatcher.add_handler(MessageHandler(abuse_man,abused))
+dispatcher.add_handler(MessageHandler(Filters.caption_entity("hashtag"),hashtag))
 
-# Added the bot to repeat the non command words
-dispatcher.add_handler(MessageHandler(Filters.text & (~Filters.command),echo))
 
 # Added the /caps functionalities to the caps
 dispatcher.add_handler(CommandHandler('caps', caps))
@@ -44,6 +39,7 @@ dispatcher.add_handler(CommandHandler('help',helpComplaints))
 
 # Add unknown to program
 dispatcher.add_handler(MessageHandler(Filters.command, unknown))
+
 
 
 # Started the bot

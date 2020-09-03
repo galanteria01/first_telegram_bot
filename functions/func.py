@@ -16,9 +16,6 @@ def sticker(update,context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Thats really stupid sticker.U suck 24/7")
 
 
-def echo(update,context):
-    context.bot.send_message(chat_id=update.effective_chat.id,text=update.message.text)
-
 
 def start(update,context):
     context.bot.send_message(chat_id=update.effective_chat.id,text="Hello! I am a bot.How are you?")
@@ -45,8 +42,16 @@ def unknown(update,context):
     update.message.reply_text("Do as i say anything bitch")
 
 
-def abused(update,context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="You retard your mom retard")
-
 def helpComplaints(update,context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text = "For helps and complaint, check github: galanteria01")
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text = "For helps and complaint, check github: galanteria01")
+
+
+def nudes(update,context):
+    if update.message == "send nudes":
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text= "no nudes madafaka")
+
+
+def hashtag(update,context):
+    update.message.reply_text("Stop this fucking hashtags")
